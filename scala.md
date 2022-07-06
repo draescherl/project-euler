@@ -2,8 +2,6 @@
 
 This file contains writeups of challenges solved using the Scala language.
 
-
-
 ## Challenge 1
 
 > Find the sum of all the multiples of 3 or 5 below 1000.
@@ -19,7 +17,7 @@ Array.range(0, 1000).filter(x => (x % 3 == 0) || (x % 5 == 0)).sum
 
 ```scala
 val fibs: Stream[Int] = 0 #:: fibs.scanLeft(1)(_ + _)
-fibs.takeWhile(_ < 1000000).filter(_ % 2 == 0).sum
+fibs.takeWhile(_ < 4000000).filter(_ % 2 == 0).sum
 ```
 
 
