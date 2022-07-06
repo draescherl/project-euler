@@ -1,2 +1,3 @@
 # projecteuler
-Solving some challenges of project Euler
+
+Using various languages to solve [Project Euler](https://projecteuler.net/) challenges.
