@@ -2,7 +2,7 @@
 
 This file contains writeups of challenges solved using the Scala language.
 
----
+
 
 ## Challenge 1
 
