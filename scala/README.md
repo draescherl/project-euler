@@ -12,7 +12,7 @@ Array.range(0, 1000).filter(x => (x % 3 == 0) || (x % 5 == 0)).sum
 
 ## Challenge 2
 
-> By considering the terms in the Fibonacci sequence whose values do not 
+> By considering the terms in the Fibonacci sequence whose values do not
 > exceed four million, find the sum of the even-valued terms.
 
 ```scala
