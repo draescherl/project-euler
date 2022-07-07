@@ -16,7 +16,6 @@ Array.range(0, 1000).filter(x => (x % 3 == 0) || (x % 5 == 0)).sum
 > exceed four million, find the sum of the even-valued terms.
 
 ```scala
-val fibs: Stream[Int] = 0 #:: fibs.scanLeft(1)(_ + _)   // Legacy
-val fibs: LazyList[Int] = 0 #:: fibs.scanLeft(1)(_ + _) // Scala 2.13+
+val fibs: LazyList[Int] = 0 #:: fibs.scanLeft(1)(_ + _)
 fibs.takeWhile(_ < 4000000).filter(_ % 2 == 0).sum
 ```
