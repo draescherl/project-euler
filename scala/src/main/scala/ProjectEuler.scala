@@ -1,5 +1,4 @@
 import scala.annotation.tailrec
-import scala.math.sqrt
 
 object ProjectEuler {
 
