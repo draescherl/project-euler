@@ -2,15 +2,9 @@ import scala.annotation.tailrec
 
 object ProjectEuler {
 
-  def time[R](block: => R): R = {
-    val t0 = System.currentTimeMillis()
-    val result = block    // call-by-name
-    val t1 = System.currentTimeMillis()
-    println("Elapsed time: " + (t1 - t0) + "ms.")
-    result
-  }
-
-
+  /* -----------------------------------------------------------------------
+   Problem 3 : What is the largest prime factor of the number 600851475143 ?
+   ----------------------------------------------------------------------- */
   def largestPrimeFactor(n: Long): Long = {
     @tailrec
     def factorize(n: Long, prime: Int = 2, list: List[Long] = Nil): List[Long] =
@@ -23,8 +17,12 @@ object ProjectEuler {
     factorize(n).max
   }
 
-  // Try using foldLeft by defining a LCM function (https://rosettacode.org/wiki/Least_common_multiple#Scala)
-  def smallestEvenlyDivisibleNumber(init: Int): Int = {
+  /* -----------------------------------------------------------------------
+   Problem 5 : What is the smallest positive number that is evenly divisible
+   by all of the numbers from 1 to 20?
+   ----------------------------------------------------------------------- */
+  // Bruteforce.
+  def smallestEvenlyDivisibleNumber(init: Int = 1): Int = {
     @tailrec
     def divisible(n: Int, divider: Int): Int =
       n % divider == 0 match {
@@ -36,8 +34,23 @@ object ProjectEuler {
     divisible(init, 2)
   }
 
+  // Using LCM function.
+  @tailrec
+  def gcd(a: Int, b: Int): Int = if (b == 0) a.abs else gcd(b, a % b)
+  def lcm(a: Int, b: Int): Int = (a * b).abs / gcd(a, b)
+  val smallestEvenlyDivisibleNumberBis: Int = List.range(1, 20).foldLeft(1)(lcm)
+
+
   def main(args: Array[String]): Unit = {
-    val result = time(smallestEvenlyDivisibleNumber(100))
+    def time[R](block: => R): R = {
+      val t0 = System.currentTimeMillis()
+      val result = block    // call-by-name
+      val t1 = System.currentTimeMillis()
+      println("Elapsed time: " + (t1 - t0) + "ms.")
+      result
+    }
+
+    val result = time(smallestEvenlyDivisibleNumberBis)
     println(result)
   }
 
