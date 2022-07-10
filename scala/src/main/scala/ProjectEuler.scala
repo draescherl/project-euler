@@ -17,21 +17,40 @@ object ProjectEuler {
     factorize(n).max
   }
 
+
+  /* -----------------------------------------------------------------------
+   Problem 4 : Find the largest palindrome made from the product of two
+   3-digit numbers.
+   ----------------------------------------------------------------------- */
+  val largestPalindrome: Int = {
+    @tailrec
+    def palindrome(a: Int = 900, b: Int = 900, list: List[Int] = Nil): List[Int] = {
+      (a, b) match {
+        case (999, 999) => (a * b) :: list
+        case (_, 999)   => palindrome(a + 1, 900,   (a * b) :: list)
+        case _          => palindrome(a,     b + 1, (a * b) :: list)
+      }
+    }
+
+    palindrome().filter(x => x.toString == x.toString.reverse).max
+  }
+
+
   /* -----------------------------------------------------------------------
    Problem 5 : What is the smallest positive number that is evenly divisible
    by all of the numbers from 1 to 20?
    ----------------------------------------------------------------------- */
   // Bruteforce.
-  def smallestEvenlyDivisibleNumber(init: Int = 1): Int = {
+  val smallestEvenlyDivisibleNumber: Int = {
     @tailrec
-    def divisible(n: Int, divider: Int): Int =
+    def divisible(n: Int = 1, divider: Int = 2): Int =
       n % divider == 0 match {
         case true if divider == 20 => n
         case true                  => divisible(n, divider + 1)
-        case false                 => divisible(n + 1, 2)
+        case false                 => divisible(n + 1)
       }
 
-    divisible(init, 2)
+    divisible()
   }
 
   // Using LCM function.
@@ -39,6 +58,10 @@ object ProjectEuler {
   def gcd(a: Int, b: Int): Int = if (b == 0) a.abs else gcd(b, a % b)
   def lcm(a: Int, b: Int): Int = (a * b).abs / gcd(a, b)
   val smallestEvenlyDivisibleNumberBis: Int = List.range(1, 20).foldLeft(1)(lcm)
+
+
+  // ------------------------------------------------------------------------------
+  // ------------------------------------------------------------------------------
 
 
   def main(args: Array[String]): Unit = {
@@ -50,7 +73,7 @@ object ProjectEuler {
       result
     }
 
-    val result = time(smallestEvenlyDivisibleNumberBis)
+    val result = time(largestPalindrome)
     println(result)
   }
 
