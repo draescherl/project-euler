@@ -28,10 +28,10 @@ object ProjectEuler {
    ----------------------------------------------------------------------- */
   val largestPalindrome: Int = {
     @tailrec
-    def palindrome(a: Int = 900, b: Int = 900, list: List[Int] = Nil): List[Int] = {
+    def palindrome(a: Int = 100, b: Int = 100, list: List[Int] = Nil): List[Int] = {
       (a, b) match {
         case (999, 999) => (a * b) :: list
-        case (_, 999)   => palindrome(a + 1, 900,   (a * b) :: list)
+        case (_,   999) => palindrome(a + 1, 100,   (a * b) :: list)
         case _          => palindrome(a,     b + 1, (a * b) :: list)
       }
     }
