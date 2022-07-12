@@ -79,6 +79,16 @@ object ProjectEuler {
   }
 
 
+  /* -----------------------------------------------------------------------
+   Problem 7 : By listing the first six prime numbers: 2, 3, 5, 7, 11,
+   and 13, we can see that the 6th prime is 13.
+
+   What is the 10 001st prime number?
+   ----------------------------------------------------------------------- */
+  val primes: LazyList[Int] = 2 #:: LazyList.from(3, step = 2)
+    .filter(n => !primes.takeWhile(_ <= math.sqrt(n)).exists(n % _ == 0))
+  // Call with : primes.take(10001).last
+
   // ------------------------------------------------------------------------------
   // ------------------------------------------------------------------------------
 
@@ -92,7 +102,7 @@ object ProjectEuler {
       result
     }
 
-    val result = time(sums)
+    val result = time(primes.take(10001).last)
     println(result)
   }
 
