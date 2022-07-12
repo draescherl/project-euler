@@ -85,9 +85,30 @@ object ProjectEuler {
 
    What is the 10 001st prime number?
    ----------------------------------------------------------------------- */
-  val primes: LazyList[Int] = 2 #:: LazyList.from(3, step = 2)
-    .filter(n => !primes.takeWhile(_ <= math.sqrt(n)).exists(n % _ == 0))
-  // Call with : primes.take(10001).last
+  def nthPrimeNumber(n: Int): Int = {
+    val primes: LazyList[Int] =
+      2 #:: LazyList.from(3, step = 2)
+      .filter(n => !primes.takeWhile(_ <= math.sqrt(n)).exists(n % _ == 0))
+    primes.take(n).last
+  }
+
+
+  /* -----------------------------------------------------------------------
+   Problem 8 : Find the thirteen adjacent digits in the 1000-digit number
+   that have the greatest product. What is the value of this product?
+   ----------------------------------------------------------------------- */
+
+
+  /* -----------------------------------------------------------------------
+   Problem 10 : The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+
+   Find the sum of all the primes below two million.
+   ----------------------------------------------------------------------- */
+  def sumPrimes(x: Long): Long = {
+    def isPrime(n: Long): Boolean = !(2L to math.sqrt(n).toLong).exists(n % _ == 0)
+    (2L to x filter isPrime).sum
+  }
+
 
   // ------------------------------------------------------------------------------
   // ------------------------------------------------------------------------------
@@ -102,7 +123,7 @@ object ProjectEuler {
       result
     }
 
-    val result = time(primes.take(10001).last)
+    val result = time(sumPrimes(2000000))
     println(result)
   }
 
