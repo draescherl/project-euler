@@ -86,9 +86,7 @@ object ProjectEuler {
    What is the 10 001st prime number?
    ----------------------------------------------------------------------- */
   def nthPrimeNumber(n: Int): Int = {
-    val primes: LazyList[Int] =
-      2 #:: LazyList.from(3, step = 2)
-      .filter(n => !primes.takeWhile(_ <= math.sqrt(n)).exists(n % _ == 0))
+    lazy val primes: LazyList[Int] = 2 #:: LazyList.from(3, step = 2).filter(n => !primes.takeWhile(_ <= math.sqrt(n)).exists(n % _ == 0))
     primes.take(n).last
   }
 
@@ -110,6 +108,17 @@ object ProjectEuler {
   }
 
 
+  /* -----------------------------------------------------------------------
+   Problem 25 : What is the index of the first term in the Fibonacci
+   sequence to contain 1000 digits?
+   ----------------------------------------------------------------------- */
+  def fibonacciIndex(numOfDigits: Int): Int = {
+    lazy val fibs: LazyList[Int] = 0 #:: fibs.scanLeft(1)(_ + _)
+    fibs.takeWhile(_.toString.length < numOfDigits).length
+  }
+  // https://youtu.be/kWVPOpuAtzE
+
+
   // ------------------------------------------------------------------------------
   // ------------------------------------------------------------------------------
 
@@ -123,8 +132,9 @@ object ProjectEuler {
       result
     }
 
-    val result = time(sumPrimes(2000000))
+    val result = time(fibonacciIndex(1_000))
     println(result)
+//    println(Runtime.getRuntime.maxMemory())
   }
 
 }
