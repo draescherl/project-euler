@@ -10,7 +10,7 @@ object Utils {
   lazy val primes: LazyList[Int] = 2 #:: LazyList.from(3, step = 2).filter(n => !primes.takeWhile(_ <= math.sqrt(n)).exists(n % _ == 0))
 
   // Check if n is a prime number
-  def isPrime(n: Long): Boolean = !(2L to math.sqrt(n).toLong).exists(n % _ == 0)
+  def isPrime(n: Long): Boolean = !(2L to math.sqrt(n.toDouble).toLong).exists(n % _ == 0)
 
   // GCD calculator
   @tailrec
