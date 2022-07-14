@@ -8,8 +8,8 @@ import utils.Utils.{fibs, time}
  ----------------------------------------------------------------------- */
 object Problem025 {
   // https://youtu.be/kWVPOpuAtzE
-  def fibonacciIndex(numOfDigits: Int): Int = {
-    fibs.takeWhile(_.toString.length < numOfDigits).length
+  def fibonacciIndex(numOfDigits: Int): Option[Int] = {
+    fibs.find(_.toString.length == numOfDigits)
   }
 
   def main(args: Array[String]): Unit =
