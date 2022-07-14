@@ -8,7 +8,7 @@ import utils.Utils.time
  ----------------------------------------------------------------------- */
 object Problem025 {
   def fibonacciIndex(numOfDigits: Int): Int = {
-    lazy val bigFibs: LazyList[BigInt] = BigInt(0) #:: bigFibs.scanLeft(BigInt(1))(_ + _)
+    lazy val bigFibs: LazyList[BigInt] = 0 #:: bigFibs.scanLeft(BigInt(1))(_ + _)
     bigFibs.indexWhere(_.toString.length == numOfDigits)
   }
 
