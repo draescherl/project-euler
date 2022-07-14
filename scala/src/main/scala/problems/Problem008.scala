@@ -12,6 +12,7 @@ import scala.annotation.tailrec
  greatest product. What is the value of this product?
  ----------------------------------------------------------------------- */
 object Problem008 {
+  // Using recursion
   def adjacentDigits(amount: Int, input: String): Long = {
     @tailrec
     def products(amount: Int, input: String, list: List[Long] = Nil): List[Long] = {
@@ -22,6 +23,7 @@ object Problem008 {
     products(amount, input).max
   }
 
+  // Using sliding
   def adjacentDigitsSliding(amount: Int, input: String): Long =
     input.split("").map(el => el.toLong).sliding(amount).map(_.product).max
 
