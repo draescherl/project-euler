@@ -23,7 +23,7 @@ object Utils {
   // Factorial calculator
   @tailrec
   def factorial(x: BigInt, fact: BigInt = 1): BigInt =
-    if (x == 1) fact
+    if (x <= 1) fact
     else factorial(x - 1, x * fact)
 
   // Get program runtime
