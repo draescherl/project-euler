@@ -1,6 +1,6 @@
 package problems
 
-import utils.Utils.time
+import utils.Utils.{factorial, time}
 
 import scala.annotation.tailrec
 
@@ -12,14 +12,8 @@ import scala.annotation.tailrec
   Find the sum of the digits in the number 100!
  ----------------------------------------------------------------------- */
 object Problem020 {
-  def sumDigits(x: BigInt): BigInt = {
-    @tailrec
-    def factorial(x: BigInt, fact: BigInt = 1): BigInt =
-      if (x == 1) fact
-      else factorial(x - 1, x * fact)
-
+  def sumDigits(x: BigInt): BigInt =
     factorial(x).toString().split("").map(_.toInt).sum
-  }
 
   def main(args: Array[String]): Unit =
     println(time(sumDigits(100)))

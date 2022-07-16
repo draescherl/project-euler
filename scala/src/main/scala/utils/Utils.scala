@@ -3,8 +3,9 @@ package utils
 import scala.annotation.tailrec
 
 object Utils {
-  // Fibonacci sequence generator
+  // Fibonacci sequence generator, for Int and BigInt
   lazy val fibs: LazyList[Int] = 0 #:: fibs.scanLeft(1)(_ + _)
+  lazy val bigFibs: LazyList[BigInt] = 0 #:: bigFibs.scanLeft(BigInt(1))(_ + _)
 
   // Prime number generator
   lazy val primes: LazyList[Int] = 2 #:: LazyList.from(3, step = 2).filter(n => !primes.takeWhile(_ <= math.sqrt(n)).exists(n % _ == 0))
@@ -18,6 +19,12 @@ object Utils {
 
   // LCM calculator
   def lcm(a: Int, b: Int): Int = (a * b).abs / gcd(a, b)
+
+  // Factorial calculator
+  @tailrec
+  def factorial(x: BigInt, fact: BigInt = 1): BigInt =
+    if (x == 1) fact
+    else factorial(x - 1, x * fact)
 
   // Get program runtime
   def time[R](block: => R): R = {
