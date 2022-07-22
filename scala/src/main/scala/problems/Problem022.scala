@@ -22,7 +22,7 @@ object Problem022 {
   def getCharPosition(c: Char): Int =
     c.toLower.toInt - 'a' + 1
 
-  lazy val data: List[(String, Int)] = Using(Source.fromFile("src/main/scala/data/names.txt")) {
+  lazy val data: List[(String, Int)] = Using(Source.fromFile("src/main/scala/data/022-names.txt")) {
     source => source.mkString.split(",").toList
   }.get.sorted.map(_.toLowerCase()).zipWithIndex
 
