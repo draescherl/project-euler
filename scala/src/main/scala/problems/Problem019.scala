@@ -43,6 +43,16 @@ object Problem019 {
     ) yield numberOfDays(years, months)).map(_.get).toList
     println(days)
 
+    val leapYears = (1900 to 2000).count(isLeap(_).getOrElse(false))
+    val totalDays = leapYears * 366 + (2000 - 1900 - leapYears) * 365
+    val daysOfWeek = for (i <- 0 to totalDays) yield i % 7
+
+//    val test = days.sliding(12).zipWithIndex.map(
+//      monthsInYear => monthsInYear.map(
+//        daysInMonth => daysOfWeek.take(daysInMonth)
+//      )
+//    ).toList
+//    println(test)
 
     5
   }
