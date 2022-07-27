@@ -33,30 +33,27 @@ object Problem019 {
         case _ => Some(31)
       }
 
-    isLeap(year) flatMap { numDays(_, month) }
+    isLeap(year) flatMap {
+      numDays(_, month)
+    }
   }
 
-  val numFirstSundays: Int = {
-    val days = (for (
-      years  <- 1900 to 2000;
-      months <-    1 to   12
-    ) yield numberOfDays(years, months)).map(_.get).toList
-    println(days)
+  def gaussFormula(day: Int, month: Int, year: Int): Int = {
+    val x = year - (14 - month) / 12
+    val y = x + x / 4 - x / 100 + x / 400
+    val z = month + 12 * ((14 - month) / 12) - 2
+    val dateOfWeek = (day + y + (31 * z) / 12) % 7
+    dateOfWeek
+  }
 
-    val leapYears = (1900 to 2000).count(isLeap(_).getOrElse(false))
-    val totalDays = leapYears * 366 + (2000 - 1900 - leapYears) * 365
-    val daysOfWeek = for (i <- 0 to totalDays) yield i % 7
-
-//    val test = days.sliding(12).zipWithIndex.map(
-//      monthsInYear => monthsInYear.map(
-//        daysInMonth => daysOfWeek.take(daysInMonth)
-//      )
-//    ).toList
-//    println(test)
-
-    5
+  val firstSundays: Int = {
+    (for (
+      year  <- 1901 to 2000;
+      month <-    1 to 12;
+      day   <-    1 to numberOfDays(year, month).getOrElse(0)
+    ) yield (day, gaussFormula(day, month, year))).count(_ == (1, 0))
   }
 
   def main(args: Array[String]): Unit =
-    println(time(numFirstSundays))
+    println(time(firstSundays))
 }
