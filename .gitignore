@@ -1,4 +1,11 @@
+# IDE stuff
 **/.idea/
+
+# Scala stuff
 **/out/
 **/target/
 **/.bsp/
+
+# Python stuff
+**/venv/
+**/env/
