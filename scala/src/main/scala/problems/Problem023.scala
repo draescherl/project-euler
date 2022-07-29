@@ -25,19 +25,13 @@ import scala.annotation.tailrec
   the sum of two abundant numbers.
  ----------------------------------------------------------------------- */
 object Problem023 {
-  def isAbundant(n: Int): Boolean =
-    sumOfDivisors(n) > n
-
-  val solution = {
+  lazy val solution: Int = {
     val limit = 28123
-    val allAbundantNumbers: Seq[Int] = (1 to limit) filter isAbundant
-
-    @tailrec
-    def compute(i: Int, j: Int, count: Int = 0): Int = {
-      i + j match {
-        case x if x >= limit => compute()
-      }
-    }
+    val abundantNumbers = (0 to limit).map(sumOfDivisors).zipWithIndex.filter(num => num._1 > num._2).map(_._2)
+    val sumsOfAbundantNumbers = abundantNumbers.view.flatMap(number =>
+      abundantNumbers.takeWhile(_ <= (limit - number)).map(_ + number)
+    ).to(IndexedSeq).distinct
+    (1 to 28123 diff sumsOfAbundantNumbers).sum
   }
 
   def main(args: Array[String]): Unit =
