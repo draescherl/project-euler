@@ -12,7 +12,7 @@ import utils.Utils.{factorial, time}
  ----------------------------------------------------------------------- */
 object Problem034 {
   // Pre-compute factorials for performance reasons.
-  val factorials: Array[Int] =
+  lazy val factorials: Array[Int] =
     (for (i <- 0 until 10) yield factorial(i).toInt).toArray
 
   def isCuriousNumber(x: Int): Boolean =

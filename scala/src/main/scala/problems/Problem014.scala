@@ -20,7 +20,7 @@ import scala.annotation.tailrec
   NOTE: Once the chain starts the terms are allowed to go above one million.
  ----------------------------------------------------------------------- */
 object Problem014 {
-  val collatzIndex: Int = {
+  lazy val collatzIndex: Int = {
     @tailrec
     def collatz(init: Long, count: Int = 0): Int =
       if (init == 1) count + 1

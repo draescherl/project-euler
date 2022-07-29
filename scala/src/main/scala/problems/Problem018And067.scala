@@ -40,7 +40,7 @@ object Problem018And067 {
     source => source.mkString
   }.get.split("\n").map(_.split("\\s+").map(_.toInt).toList).toList
 
-  val maxTotal: Int = {
+  lazy val maxTotal: Int = {
     // TODO: Figure out a way to do this using only immutable data types.
     val memory = collection.mutable.Map[(Int, Int), Int]()
 

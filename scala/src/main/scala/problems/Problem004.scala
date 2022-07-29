@@ -11,7 +11,7 @@ import scala.annotation.tailrec
  Find the largest palindrome made from the product of two 3-digit numbers.
  ----------------------------------------------------------------------- */
 object Problem004 {
-  val largestPalindrome: Int = {
+  lazy val largestPalindrome: Int = {
     @tailrec
     def palindrome(a: Int = 100, b: Int = 100, list: List[Int] = Nil): List[Int] = {
       (a, b) match {

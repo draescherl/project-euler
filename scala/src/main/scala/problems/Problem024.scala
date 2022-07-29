@@ -15,7 +15,7 @@ import utils.Utils.time
   3, 4, 5, 6, 7, 8 and 9?
  ----------------------------------------------------------------------- */
 object Problem024 {
-  val millionthPermutation: Long =
+  lazy val millionthPermutation: Long =
     (0 to 9)
       .permutations
       .map(_.mkString.toLong)

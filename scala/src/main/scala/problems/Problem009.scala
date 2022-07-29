@@ -11,7 +11,7 @@ import utils.Utils.time
   Find the product abc.
  ----------------------------------------------------------------------- */
 object Problem009 {
-  val uniqueProduct: Long = {
+  lazy val uniqueProduct: Long = {
     val limit = (1 to 1000).find(n => n + math.sqrt(n) >= 1000).get
     val products = for (
       a <- 1 until limit;

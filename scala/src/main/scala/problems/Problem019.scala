@@ -46,7 +46,7 @@ object Problem019 {
     dateOfWeek
   }
 
-  val firstSundays: Int = {
+  lazy val firstSundays: Int = {
     (for (
       year  <- 1901 to 2000;
       month <-    1 to 12;

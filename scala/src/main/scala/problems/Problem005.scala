@@ -13,7 +13,7 @@ import scala.annotation.tailrec
  ----------------------------------------------------------------------- */
 object Problem005 {
   // Bruteforce
-  val smallestEvenlyDivisibleNumber: Int = {
+  lazy val smallestEvenlyDivisibleNumber: Int = {
     @tailrec
     def divisible(n: Int = 1, divider: Int = 2): Int =
       n % divider == 0 match {
@@ -26,7 +26,7 @@ object Problem005 {
   }
 
   // Using LCM function
-  val smallestEvenlyDivisibleNumberBis: Int =
+  lazy val smallestEvenlyDivisibleNumberBis: Int =
     List.range(1, 20).foldLeft(1)(lcm)
 
   def main(args: Array[String]): Unit = {
