@@ -1,6 +1,6 @@
 package problems
 
-import utils.Utils.time
+import utils.Utils.{sumOfDivisors, time}
 
 /* -----------------------------------------------------------------------
   Problem 21 : Let d(n) be defined as the sum of proper divisors of n
@@ -15,9 +15,6 @@ import utils.Utils.time
   Evaluate the sum of all the amicable numbers under 10000.
  ----------------------------------------------------------------------- */
 object Problem021 {
-  def sumOfDivisors(x: Int): Int =
-    (1 to x / 2).filter(x % _ == 0).toList.sum
-
   def amicableNumbersUnder(x: Int): List[Int] =
     (1 to x).filter(num => num != sumOfDivisors(num) && num == sumOfDivisors(sumOfDivisors(num))).toList
 

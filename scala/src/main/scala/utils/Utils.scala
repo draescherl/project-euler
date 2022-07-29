@@ -26,6 +26,10 @@ object Utils {
     if (x <= 1) fact
     else factorial(x - 1, x * fact)
 
+  // Decompose x into a list of its divisors and compute the sum
+  def sumOfDivisors(x: Int): Int =
+    (1 to x / 2).filter(x % _ == 0).toList.sum
+
   // Get program runtime
   def time[R](block: => R): R = {
     val t0 = System.currentTimeMillis()
