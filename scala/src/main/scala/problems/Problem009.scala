@@ -2,14 +2,8 @@ package problems
 
 import utils.Utils.time
 
-/* -----------------------------------------------------------------------
-  Problem 9 : A Pythagorean triplet is a set of three natural numbers,
-  a < b < c, for which, a² + b² = c²
-  For example, 32 + 42 = 9 + 16 = 25 = 52.
-
-  There exists exactly one Pythagorean triplet for which a + b + c = 1000.
-  Find the product abc.
- ----------------------------------------------------------------------- */
+// https://projecteuler.net/problem=9
+// (a, b, c) such that a²+b²=c² and a+b+c=1000
 object Problem009 {
   lazy val uniqueProduct: Long = {
     val limit = (1 to 1000).find(n => n + math.sqrt(n) >= 1000).get

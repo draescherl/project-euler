@@ -2,11 +2,11 @@ package problems
 
 import utils.Utils.{fibs, time}
 
-// By considering the terms in the Fibonacci sequence whose values do not
-// exceed four million, find the sum of the even-valued terms.
+// https://projecteuler.net/problem=2
+// Sum of even primes under 4 million
 object Problem002 {
   def main(args: Array[String]): Unit = {
-    val result = fibs.takeWhile(_ < 4000000).filter(_ % 2 == 0).sum
+    val result = fibs.takeWhile(_ < 4_000_000).filter(_ % 2 == 0).sum
     println(time(result))
   }
 }

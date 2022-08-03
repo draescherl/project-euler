@@ -2,14 +2,8 @@ package problems
 
 import utils.Utils.{factorial, time}
 
-/* -----------------------------------------------------------------------
-  Problem 29 : 145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
-
-  Find the sum of all numbers which are equal to the sum of the factorial
-  of their digits.
-
-  Note: As 1! = 1 and 2! = 2 are not sums they are not included.
- ----------------------------------------------------------------------- */
+// https://projecteuler.net/problem=34
+// Sum of numbers equal to the sum of the factorial of their digits
 object Problem034 {
   // Pre-compute factorials for performance reasons.
   lazy val factorials: Array[Int] =

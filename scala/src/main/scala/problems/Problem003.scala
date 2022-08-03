@@ -4,11 +4,8 @@ import utils.Utils.time
 
 import scala.annotation.tailrec
 
-/* -----------------------------------------------------------------------
- Problem 3 : The prime factors of 13195 are 5, 7, 13 and 29.
-
- What is the largest prime factor of the number 600851475143 ?
- ----------------------------------------------------------------------- */
+// https://projecteuler.net/problem=3
+// Largest prime factor of 600_851_475_143
 object Problem003 {
   def largestPrimeFactor(n: Long): Long = {
     @tailrec
@@ -23,5 +20,5 @@ object Problem003 {
   }
 
   def main(args: Array[String]): Unit =
-    println(time(largestPrimeFactor(600851475143L)))
+    println(time(largestPrimeFactor(600_851_475_143L)))
 }
