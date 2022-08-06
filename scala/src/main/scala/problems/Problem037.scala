@@ -1,6 +1,6 @@
 package problems
 
-import utils.Utils.{isPrime, time}
+import utils.Utils.{isPrime, time, primes, ESieve}
 
 import scala.annotation.tailrec
 
@@ -14,22 +14,22 @@ object Problem037 {
     rightToLeft.forall(isPrime) && leftToRight.forall(isPrime)
   }
 
-  lazy val primes: LazyList[Int] =
-    11 #:: LazyList.from(13, step = 2).filter(n => !primes.takeWhile(_ <= math.sqrt(n)).exists(n % _ == 0))
+  lazy val primesFrom: Int => LazyList[Int] = (start: Int) =>
+    start #:: LazyList.from(start + 2, step = 2).filter(n => !primesFrom(start).takeWhile(_ <= math.sqrt(n)).exists(n % _ == 0))
 
-//  @tailrec
-//  def compute(tmp: LazyList[Int], elements: List[Long] = Nil, count: Int = 11): List[Long] = {
-//    if (count == 0) elements
-//    else {
-//      val tmp2 = tmp.takeWhile(!isTruncatable(_))
-//    }
-//  }
+  // Start value MUST be a prime number
+  @tailrec
+  def compute(elements: List[Long] = Nil, start: Int = 11): List[Long] = {
+    if (elements.length == 11) elements
+    else {
+      val candidate = ESieve(LazyList.from(start)).take(2).last
+      if (isTruncatable(candidate)) compute(candidate :: elements, candidate)
+      else                          compute(elements,              candidate)
+    }
+  }
 
   def main(args: Array[String]): Unit =
-    println(time({
-      val number = primes.takeWhile(!isTruncatable(_)).length
-      primes.take(number+1).toList
-    }
-//      primes.take(len).toList
+    println(time(
+      compute()
     ))
 }

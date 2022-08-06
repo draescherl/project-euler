@@ -10,6 +10,10 @@ object Utils {
   // Prime number generator
   lazy val primes: LazyList[Int] = 2 #:: LazyList.from(3, step = 2).filter(n => !primes.takeWhile(_ <= math.sqrt(n)).exists(n % _ == 0))
 
+  // Prime number generator using the Sieve of Eratosthenes
+  def ESieve(list: LazyList[Int] = LazyList.from(2)): LazyList[Int] =
+    list.head #:: ESieve(list.tail.filter(x => x % list.head != 0))
+
   // Check if n is a prime number
   def isPrime(n: Long): Boolean = primes.takeWhile(_ <= n).contains(n)
 
