@@ -7,7 +7,7 @@ import scala.util.Using
 
 // https://projecteuler.net/problem=22
 // Sum of name scores
-object Problem022 {
+object Problem022 extends App {
   def getCharPosition(c: Char): Int =
     c.toLower.toInt - 'a' + 1
 
@@ -18,6 +18,5 @@ object Problem022 {
   lazy val scores: BigInt =
     data.map(el => el._1.toCharArray.drop(1).dropRight(1).map(getCharPosition).sum * (el._2 + 1)).sum
 
-  def main(args: Array[String]): Unit =
-    println(time(scores))
+  println(time(scores))
 }

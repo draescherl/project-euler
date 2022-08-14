@@ -4,7 +4,7 @@ import utils.Utils.time
 
 // https://projecteuler.net/problem=6
 // Difference between the sum of the squares of the first one hundred natural numbers and the square of the sum
-object Problem006 {
+object Problem006 extends App {
   lazy val sums: Int = {
     val n = 100
     val sumSquares = Array.range(0, n + 1).map(x => x * x).sum
@@ -12,6 +12,5 @@ object Problem006 {
     squareSum - sumSquares
   }
 
-  def main(args: Array[String]): Unit =
-    println(time(sums))
+  println(time(sums))
 }

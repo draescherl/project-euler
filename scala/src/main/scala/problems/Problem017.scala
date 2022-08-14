@@ -4,7 +4,7 @@ import utils.Utils.time
 
 // https://projecteuler.net/problem=17
 // Number of letters in numbers from 1 to 1000
-object Problem017 {
+object Problem017 extends App {
   def numOfCharacters(x: Int): Int = {
     val units: Array[Int] = 0 +: Array(
       "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
@@ -20,6 +20,5 @@ object Problem017 {
     else 11
   }
 
-  def main(args: Array[String]): Unit =
-    println(time((1 to 1000).map(numOfCharacters).sum))
+  println(time((1 to 1000).map(numOfCharacters).sum))
 }

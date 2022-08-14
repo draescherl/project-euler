@@ -6,7 +6,7 @@ import scala.annotation.tailrec
 
 // https://projecteuler.net/problem=14
 // Longest Collatz chain starting with numbers 0..1_000_000
-object Problem014 {
+object Problem014 extends App {
   lazy val collatzIndex: Int = {
     @tailrec
     def collatz(init: Long, count: Int = 0): Int =
@@ -19,6 +19,5 @@ object Problem014 {
       .reduce((a, b) => if (a._2 > b._2) a else b)._1
   }
 
-  def main(args: Array[String]): Unit =
-    println(time(collatzIndex))
+  println(time(collatzIndex))
 }

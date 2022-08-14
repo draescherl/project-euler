@@ -4,10 +4,9 @@ import utils.Utils.{primes, time}
 
 // https://projecteuler.net/problem=7
 // 10_001st prime number
-object Problem007 {
+object Problem007 extends App {
   def nthPrimeNumber(n: Int): Int =
     primes.take(n).last
 
-  def main(args: Array[String]): Unit =
-    println(time(nthPrimeNumber(10001)))
+  println(time(nthPrimeNumber(10001)))
 }

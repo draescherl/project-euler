@@ -8,7 +8,7 @@ import scala.util.Using
 // https://projecteuler.net/problem=18
 // https://projecteuler.net/problem=67
 // Max path through a triangle
-object Problem018And067 {
+object Problem018And067 extends App {
   lazy val data: List[List[Int]] = Using(Source.fromFile("src/main/scala/data/067-triangle.txt")) {
     source => source.mkString
   }.get.split("\n").map(_.split("\\s+").map(_.toInt).toList).toList
@@ -25,6 +25,5 @@ object Problem018And067 {
     compute()
   }
 
-  def main(args: Array[String]): Unit =
-    println(time(maxTotal))
+  println(time(maxTotal))
 }

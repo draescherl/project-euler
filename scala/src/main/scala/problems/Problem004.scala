@@ -6,7 +6,7 @@ import scala.annotation.tailrec
 
 // https://projecteuler.net/problem=4
 // Largest palindrome made from the product of two 3-digit numbers
-object Problem004 {
+object Problem004 extends App {
   lazy val largestPalindrome: Int = {
     @tailrec
     def palindrome(a: Int = 100, b: Int = 100, list: List[Int] = Nil): List[Int] = {
@@ -20,6 +20,5 @@ object Problem004 {
     palindrome().filter(x => x.toString == x.toString.reverse).max
   }
 
-  def main(args: Array[String]): Unit =
-    println(time(largestPalindrome))
+  println(time(largestPalindrome))
 }

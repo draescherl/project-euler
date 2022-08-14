@@ -6,7 +6,7 @@ import scala.annotation.tailrec
 
 // https://projecteuler.net/problem=3
 // Largest prime factor of 600_851_475_143
-object Problem003 {
+object Problem003 extends App {
   def largestPrimeFactor(n: Long): Long = {
     @tailrec
     def factorize(n: Long, prime: Int = 2, list: List[Long] = Nil): List[Long] =
@@ -19,6 +19,5 @@ object Problem003 {
     factorize(n).max
   }
 
-  def main(args: Array[String]): Unit =
-    println(time(largestPrimeFactor(600_851_475_143L)))
+  println(time(largestPrimeFactor(600_851_475_143L)))
 }

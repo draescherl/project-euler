@@ -4,7 +4,7 @@ import utils.Utils.time
 
 // https://projecteuler.net/problem=12
 // First triangular number to have over 500 divisors
-object Problem012 {
+object Problem012 extends App {
   // for(i <- 1 to 28 if 28 % i == 0) yield i
   def firstTriangularNumber(numOfDivisors: Int): Int = {
     lazy val triangleNumber: LazyList[Int] =
@@ -17,6 +17,5 @@ object Problem012 {
     triangleNumber.find(getNumberOfDivisors(_) > numOfDivisors).get
   }
 
-  def main(args: Array[String]): Unit =
-    println(time(firstTriangularNumber(500)))
+  println(time(firstTriangularNumber(500)))
 }

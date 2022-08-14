@@ -4,7 +4,7 @@ import utils.Utils.time
 
 // https://projecteuler.net/problem=19
 // Number of Sundays 1st of XXX from 1901 to 2000
-object Problem019 {
+object Problem019 extends App {
   def isLeap(year: Int): Option[Boolean] =
     if (year < 0) None
     else Some((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0))
@@ -39,6 +39,5 @@ object Problem019 {
     ) yield (day, gaussFormula(day, month, year))).count(_ == (1, 0))
   }
 
-  def main(args: Array[String]): Unit =
-    println(time(firstSundays))
+  println(time(firstSundays))
 }

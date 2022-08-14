@@ -1,12 +1,12 @@
 package problems
 
-import utils.Utils.{isPrime, time, primes, ESieve}
+import utils.Utils.{ESieve, isPrime, time}
 
 import scala.annotation.tailrec
 
 // https://projecteuler.net/problem=37
 // Sum of the eleven primes that are truncatable from left and right
-object Problem037 {
+object Problem037 extends App {
   def isTruncatable(n: Int): Boolean = {
     val asArray = n.toString.split("")
     val rightToLeft = asArray.scanLeft("")(_ + _).drop(1).map(_.toLong).reverse
@@ -28,8 +28,5 @@ object Problem037 {
     }
   }
 
-  def main(args: Array[String]): Unit =
-    println(time(
-      compute()
-    ))
+  println(time(compute()))
 }

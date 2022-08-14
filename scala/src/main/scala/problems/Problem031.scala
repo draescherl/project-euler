@@ -4,7 +4,7 @@ import utils.Utils.time
 
 // https://projecteuler.net/problem=31
 // Number of ways to make £2 using any number of coins
-object Problem031 {
+object Problem031 extends App {
   def ways(coins: List[Int], target: Int): Int =
     coins match {
       case head :: tail => if (head > target) 0
@@ -13,6 +13,5 @@ object Problem031 {
       case _            => 0
     }
 
-  def main(args: Array[String]): Unit =
-    println(time(ways(List(1, 2, 5, 10, 20, 50, 100, 200), 200)))
+  println(time(ways(List(1, 2, 5, 10, 20, 50, 100, 200), 200)))
 }

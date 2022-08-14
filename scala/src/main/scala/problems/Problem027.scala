@@ -4,7 +4,7 @@ import utils.Utils.{isPrime, time}
 
 // https://projecteuler.net/problem=27
 // Product of the coefficients (a, b) for the quadratic expression that produces the maximum number of primes for consecutive values of n, starting with 0
-object Problem027 {
+object Problem027 extends App {
   def sequenceLength(a: Int, b: Int): Int =
     LazyList.from(0).map(n => n * n + a * n + b).takeWhile(isPrime(_)).length
 
@@ -17,6 +17,5 @@ object Problem027 {
     max._1 * max._2
   }
 
-  def main(args: Array[String]): Unit =
-    println(time(solution))
+  println(time(solution))
 }

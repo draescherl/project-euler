@@ -6,7 +6,7 @@ import scala.annotation.tailrec
 
 // https://projecteuler.net/problem=5
 // Smallest number evenly divisible from numbers 1..20
-object Problem005 {
+object Problem005 extends App {
   // Bruteforce
   lazy val smallestEvenlyDivisibleNumber: Int = {
     @tailrec
@@ -24,8 +24,6 @@ object Problem005 {
   lazy val smallestEvenlyDivisibleNumberBis: Int =
     List.range(1, 20).foldLeft(1)(lcm)
 
-  def main(args: Array[String]): Unit = {
-    println(time(smallestEvenlyDivisibleNumber))
-    println(time(smallestEvenlyDivisibleNumberBis))
-  }
+  println(time(smallestEvenlyDivisibleNumber))
+  println(time(smallestEvenlyDivisibleNumberBis))
 }

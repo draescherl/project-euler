@@ -4,7 +4,7 @@ import utils.Utils.time
 
 // https://projecteuler.net/problem=32
 // Sum of all products whose multiplicand/multiplier/product identity can be written as a 1 through 9 pandigital
-object Problem032 {
+object Problem032 extends App {
   def isPandigital(n: Long): Boolean = {
     val asList = n.toString.split("").map(_.toInt).toList
     val max = asList.max
@@ -20,6 +20,5 @@ object Problem032 {
     ) yield a * b).distinct.sum
   }
 
-  def main(args: Array[String]): Unit =
-    println(time(solution))
+  println(time(solution))
 }

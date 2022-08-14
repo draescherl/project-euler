@@ -6,7 +6,7 @@ import scala.annotation.tailrec
 
 // https://projecteuler.net/problem=35
 // Number of circular primes below 1_000_000
-object Problem035 {
+object Problem035 extends App {
   @tailrec
   def shiftArray(input: List[Int], amount: Int = 1): List[Int] =
     if (amount <= 0) input
@@ -20,6 +20,5 @@ object Problem035 {
   def circularPrimesBelow(n: Int): Int =
     primes.takeWhile(_ < n).count(isCircularPrime)
 
-  def main(args: Array[String]): Unit =
-    println(time(circularPrimesBelow(1_000_000)))
+  println(time(circularPrimesBelow(1_000_000)))
 }

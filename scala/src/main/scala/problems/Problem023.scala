@@ -4,7 +4,7 @@ import utils.Utils.{sumOfDivisors, time}
 
 // https://projecteuler.net/problem=23
 // Sum of all positive integers that can't be written as the sum of 2 abundant numbers
-object Problem023 {
+object Problem023 extends App {
   lazy val solution: Int = {
     val limit = 28123
     val abundantNumbers = (0 to limit).map(sumOfDivisors).zipWithIndex.filter(num => num._1 > num._2).map(_._2)
@@ -14,6 +14,5 @@ object Problem023 {
     (1 to 28123 diff sumsOfAbundantNumbers).sum
   }
 
-  def main(args: Array[String]): Unit =
-    println(time(solution))
+  println(time(solution))
 }
